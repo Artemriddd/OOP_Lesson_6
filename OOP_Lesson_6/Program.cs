@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace OOP_Lesson_6
 {
@@ -10,61 +6,46 @@ namespace OOP_Lesson_6
     {
         static void Main(string[] args)
         {
-            // Создаем счет мужа
-            Check checkOne = new Check();
-            checkOne.balance = 100;
-            checkOne.number = 1;
-            checkOne.type = Type.Husband;
+            Point point = new Point(); // Тест для точки
+            point.color = Color.Red;
+            point.IsVisible = true;
+            point.X = 0;
+            point.Y = 0;
+            point.Status();
+            point.Print();
 
-            // Выводим на экран данные о счете мужа
-            PrintType(checkOne.type);
-            Console.WriteLine($"Баланс = {checkOne.balance} рублей");
-            Console.WriteLine($"Номер счета: {checkOne.number}\n");
 
-            // Создаем счет жены
-            Check checkTwo = new Check();
-            checkTwo.balance = 200;
-            checkTwo.number = 2;
-            checkTwo.type = Type.Wife;
+            Circle circle = new Circle();  // Тест для круга
+            circle.color = Color.Yellow;
+            circle.IsVisible = true;
+            circle.R = 10;
+            circle.X = 10;
+            circle.Y = 10;
+            circle.Status();
+            circle.Print(); // Рисуем
+            circle.MoveX(5); // Пробуем сдвинуть
+            circle.MoveY(5);
+            circle.R = 4;
+            circle.Print(); // Рисуем
 
-            // Выводим на экран данные о счете жены
-            PrintType(checkTwo.type);
-            Console.WriteLine($"Баланс = {checkTwo.balance} рублей");
-            Console.WriteLine($"Номер счета: {checkTwo.number}\n");
-
-            // Создаем счет жены
-            Check checkThree = new Check();
-            checkThree.balance = 2200;
-            checkThree.number = 3;
-            checkThree.type = Type.Wife;
-
-            // Выводим на экран данные о счете жены
-            PrintType(checkThree.type);
-            Console.WriteLine($"Баланс = {checkThree.balance} рублей");
-            Console.WriteLine($"Номер счета: {checkThree.number}\n");
-
-            Console.WriteLine(checkOne == checkTwo); // Ожидаем false
-            Console.WriteLine(checkThree == checkTwo); // Ожидаем true
-            Console.WriteLine(checkTwo.Equals(checkThree)); // Ожидаем true
-            Console.WriteLine(checkOne.GetHashCode() == checkThree.GetHashCode());  // Ожидаем false
-            Console.WriteLine(checkTwo.GetHashCode() == checkThree.GetHashCode());  // Ожидаем true
-
-            // Все работает корректно!
+            Rectangle rectangle = new Rectangle();  // Тест для прямоугольника
+            rectangle.IsVisible = true;
+            rectangle.color = Color.Green;
+            rectangle.X = 0;
+            rectangle.Y = 0;
+            rectangle.SizeA = 3;  // Размеры сторон
+            rectangle.SizeB = 3;
+            rectangle.Status();
+            rectangle.MoveX(5);  // Пробуем сдвинуть
+            rectangle.MoveY(5);
+            rectangle.Status();  // Проверяем, что координаты изменились
+            rectangle.Print();  // Рисуем
+            rectangle.MoveX(15);   // Пробуем сдвинуть еще раз
+            rectangle.MoveY(15);  
+            rectangle.ChangeColor(Color.Blue);  // Пробуем менять цвет
+            rectangle.Print();   // Рисуем с новым цветом и в новом месте
+            Console.ReadKey(true);
 
         }
-        // Перенес метод в Main согласно вашему Code Review
-        public static void PrintType(Type type)
-        {
-            switch (type)
-            {
-                case Type.Husband:
-                    Console.WriteLine("Счет мужа");
-                    break;
-                case Type.Wife:
-                    Console.WriteLine("Счет жены");
-                    break;
-            }
-        }
-
     }
 }
